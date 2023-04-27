@@ -4,15 +4,15 @@
 #include <iostream>
 #include <fstream>
 #include <array>
-
-
 #include <string>
+
+using namespace std;
 
 bool isOperator(char c);
 bool isLeftParenthesis(char c);
 bool isRightParenthesis(char c);
 int getPrecedence(char c);
-std::string infixToPostfix(std::string expression);
-bool hasBalancedParentheses(std::string expression);
+string infixToPostfix(string expression);
+bool hasBalancedParentheses(string expression);
 
 #endif

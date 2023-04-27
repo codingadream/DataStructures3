@@ -2,27 +2,27 @@
 #include <fstream>
 #include <array>
 #include <string>
-
-using namespace std;
-#include "ExpressionManager.h"
 #include <stack>
+#include "ExpressionManager.h"
+ 
+using namespace std; 
 
-// Function to check if the given character is an operator
+ // Check if character is an operator
 bool isOperator(char c) {
     return (c == '+' || c == '-' || c == '*' || c == '/' || c == '%');
 }
 
-// Function to check if the given character is a left parenthesis
+// check if character is left parenthesis
 bool isLeftParenthesis(char c) {
     return (c == '(' || c == '{' || c == '[');
 }
 
-// Function to check if the given character is a right parenthesis
+// Check if character is a right parenthesis
 bool isRightParenthesis(char c) {
     return (c == ')' || c == '}' || c == ']');
 }
 
-// Function to get the precedence of the given operator
+// gets pre-existence of given operator
 int getPrecedence(char c) {
     if (c == '+' || c == '-') {
         return 1;
@@ -33,9 +33,9 @@ int getPrecedence(char c) {
 }
 
 // Function to convert infix expression to postfix expression
-std::string infixToPostfix(std::string expression) {
-    std::stack<char> s;
-    std::string postfix = "";
+string infixToPostfix(string expression) {
+    stack<char> s;
+    string postfix = "";
 
     for (int i = 0; i < expression.length(); i++) {
         char c = expression[i];
@@ -49,7 +49,7 @@ std::string infixToPostfix(std::string expression) {
         if (isdigit(c) || isalpha(c)) {
             postfix += c;
         } else if (isOperator(c)) {
-            // If current character is an operator, pop operators with higher or equal precedence from the stack and add them to the postfix expression
+            
             while (!s.empty() && isOperator(s.top()) && getPrecedence(s.top()) >= getPrecedence(c)) {
                 postfix += s.top();
                 s.pop();
@@ -60,7 +60,7 @@ std::string infixToPostfix(std::string expression) {
             // If current character is a left parenthesis, push it onto the stack
             s.push(c);
         } else if (isRightParenthesis(c)) {
-            // If current character is a right parenthesis, pop operators from the stack and add them to the postfix expression until a matching left parenthesis is found
+           
             while (!s.empty() && !isLeftParenthesis(s.top())) {
                 postfix += s.top();
                 s.pop();
@@ -74,7 +74,7 @@ std::string infixToPostfix(std::string expression) {
         }
     }
 
-    // Pop any remaining operators from the stack and add them to the postfix expression
+    
     while (!s.empty()) {
         if (isLeftParenthesis(s.top())) {
             // If there is a left parenthesis on the stack, the expression is invalid
@@ -87,8 +87,8 @@ std::string infixToPostfix(std::string expression) {
 return postfix;
 }
 
-bool hasBalancedParentheses(std::string expression) {
-std::stack<char> s;
+bool hasBalancedParentheses(string expression) {
+stack<char> s;
 for (int i = 0; i < expression.length(); i++) {
     char c = expression[i];
 
