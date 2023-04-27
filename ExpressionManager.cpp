@@ -4,10 +4,10 @@
 #include <string>
 #include <stack>
 #include "ExpressionManager.h"
+ 
+using namespace std; 
 
-using namespace std;
-
-// Check if character is an operator
+ // Check if character is an operator
 bool isOperator(char c) {
     return (c == '+' || c == '-' || c == '*' || c == '/' || c == '%');
 }
