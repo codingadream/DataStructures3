@@ -15,12 +15,12 @@ int main() {
   cin >> choice;
   if (choice == 1){
 
-    string expression;
-//(4 + 3) * 2 - 1 / 5
+    std::string expression;
     // Read an infix expression from the user
     cout << "Enter an infix expression: ";
-    getline(cin, expression);
-
+    cin >> expression;
+    
+    
     // Check if the expression has balanced parentheses
     if (!hasBalancedParentheses(expression)) {
         cout << "Invalid Expression: Unmatched Parentheses" << endl;
@@ -29,7 +29,6 @@ int main() {
 
     // Convert the infix expression to postfix expression
     string postfix = infixToPostfix(expression);
-
     // Display the postfix expression
     cout << "Postfix expression: " << postfix << endl;
 
